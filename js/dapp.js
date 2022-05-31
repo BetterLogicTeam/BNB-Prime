@@ -108,14 +108,14 @@ async function checkUserChainId() {
         setTimeout(checkUserChainId, 800)
         return
     }
-    if(wallet === "ethereum" && window.ethereum.chainId && (Number.parseInt(window.ethereum.chainId) !== 56)){
+    if(wallet === "ethereum" && window.ethereum.chainId && (Number.parseInt(window.ethereum.chainId) !== 97)){
         
         const res = confirm('Switch to mainnet, please.')
             if(res){
               try{
               await window.ethereum.request({
                   method: 'wallet_switchEthereumChain',
-                  params: [{ chainId: '0x38' }],
+                  params: [{ chainId: '0x61' }],
                 });
               } catch (switchError) {
                
@@ -127,7 +127,7 @@ async function checkUserChainId() {
                       method: 'wallet_addEthereumChain',
                       params: [
                         {
-                          chainId: '0x38',
+                          chainId: '0x61',
                           chainName: 'Binance SmartChain Mainnet',
                           nativeCurrency: {
                             name: 'Binance',
@@ -148,9 +148,9 @@ async function checkUserChainId() {
                 // handle other "switch" errors
               }
             }
-    }else if(wallet === "BinanceChain" && window.BinanceChain.chainId && Number.parseInt(window.BinanceChain.chainId) !== 56){
+    }else if(wallet === "BinanceChain" && window.BinanceChain.chainId && Number.parseInt(window.BinanceChain.chainId) !== 97){
         const params = [{
-            chainId: '0x38',
+            chainId: '0x61',
             chainName: 'Binance SmartChain',
             nativeCurrency: {
               name: 'Binance',
